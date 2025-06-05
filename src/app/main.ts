@@ -16,6 +16,11 @@ import CreatePet from "../negocio/cadastroPet";
 import ReadPets from "../negocio/listagemPets";
 import UpdatePet from "../negocio/updatePet";
 import DeletePet from "../negocio/deletePet";
+import RegistroConsumo from "../negocio/registroConsumo"; 
+import Listagem10Cliente from "../negocio/listagem10Cliente";
+import ListagemConsumo from "../negocio/listagemConsumo";
+import ListagemConsumoPet from "../negocio/listagemConsumoPet";
+import ListagemClienteValor from "../negocio/listagemClienteValor";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
 let empresa = new Empresa()
@@ -39,9 +44,16 @@ while (execucao) {
 |  11 - Editar produto               15 - Editar servico         |
 |  12 - Remover produto              16 - Remover servico        |
 |                                                                |
+|  17 - Registrar consumo (produto/servico)                      |
+|  18 - Listar top 10 clientes por quantidade de consumo         |
+|  19 - Listar produtos e servicos mais consumidos               |
+|  20 - Listar consumo por tipo e raça de pets                   |
+|  21 - Listar top 5 clientes por valor de consumo               |
+|                                                                |
 |  0 - Sair                                                      |
 |                                                                |
-+================================================================+`);
++================================================================+`
+);
 
     let entrada = new Entrada()
     let opcao = entrada.receberNumero(`Por favor, escolha uma opcao: `)
@@ -126,6 +138,36 @@ while (execucao) {
             console.log(`\n--- REMOCAO DE SERVICO ---`);
             let removerServico = new DeleteServico(empresa.getServicos)
             removerServico.remover()
+            break;
+        case 17:
+            console.log(`\n--- REGISTRO DE CONSUMO ---`);
+            let registroConsumo = new RegistroConsumo(
+            empresa.getClientes,
+            empresa.getProdutos,
+            empresa.getServicos
+            );
+            registroConsumo.registrar();
+            break;
+        case 18:
+            let listagemTopClientes = new Listagem10Cliente(empresa.getClientes)
+            listagemTopClientes.listar()
+            break; 
+        case 19:
+            let listagemMaisConsumidos = new ListagemConsumo(
+            empresa.getClientes, empresa.getProdutos, empresa.getServicos)
+            listagemMaisConsumidos.listar()
+            break;
+        case 20:
+            let listagemConsumoPet = new ListagemConsumoPet(
+            empresa.getClientes,
+            empresa.getProdutos,
+            empresa.getServicos
+            )
+            listagemConsumoPet.listar()
+            break;
+        case 21:
+            let listagemClienteValor = new ListagemClienteValor(empresa.getClientes)
+            listagemClienteValor.listar()
             break;
         case 0:
             execucao = false
