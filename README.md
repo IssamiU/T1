@@ -1,10 +1,4 @@
-# Atividade 1 – c4p
-
-## Descrição do Projeto
-
-Esta atividade consiste em uma aplicação Node.js simples, focada em entrada de dados pelo terminal utilizando a biblioteca `prompt-sync`. O projeto foi desenvolvido para rodar em ambiente local, com dependências mínimas e tipagem TypeScript para melhor experiência de desenvolvimento.
-
----
+# T1
 
 ## Estrutura do Projeto
 
@@ -14,7 +8,7 @@ Esta atividade consiste em uma aplicação Node.js simples, focada em entrada de
 │   └── app/
 │       └── main.js
 ├── src/
-│   └── ... (caso utilize TypeScript)
+│   └── ... 
 ├── package.json
 └── ...
 ```
